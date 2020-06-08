@@ -54,7 +54,7 @@
 
       Ball.prototype.moveDown = function () {
           this.y -= 1.5;
-      } 
+      }
 
     //Next Part
 
@@ -79,7 +79,7 @@
       };
 
       Ball2.prototype.draw = function () {
-        circle(this.x, this.y, 10, true, "Black");
+        circle(this.x, this.y, 30, false, "Black");
       };
 
       Ball2.prototype.move = function () {
@@ -101,7 +101,52 @@
 
       Ball2.prototype.moveDown = function () {
           this.y -= 1.5;
-      } 
+      }
+
+      var Ball3 = function () {
+          this.Ballcoords = P1coords
+          this.x = Ball.x + 100;
+          this.y = Ball.y + 100;
+          this.xSpeed = 0;
+          this.ySpeed = 0;
+          this.newDirection = 0;
+          };
+
+      var circle = function(x, y, radius, fillCircle, color) {
+          ctx.beginPath();
+          ctx.fillStyle = color
+          ctx.arc(x, y, radius, 0, Math.PI * 2, false)
+          if (fillCircle) {
+              ctx.fill();
+          }else{
+              ctx.stroke();
+          }
+      };
+
+      Ball3.prototype.draw = function () {
+        circle(this.x, this.y, 10, true, "Black");
+      };
+
+      Ball3.prototype.move = function () {
+         this.x += this.xSpeed;
+         this.y += this.YSpeed;
+      };
+
+      Ball3.prototype.moveLeft = function () {
+          this.x -= 1.5;
+      }
+
+      Ball3.prototype.moveRight = function () {
+          this.x += 1.5;
+      }
+
+      Ball3.prototype.moveUp = function () {
+          this.y += 1.5;
+      }
+
+      Ball3.prototype.moveDown = function () {
+          this.y -= 1.5;
+      }
 
 
     </script>
@@ -118,13 +163,13 @@
             39: "right",
             40: "down"
         }
-         
+
         setInterval(function () {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-        var newDirection;  
+        var newDirection;
         $("body").keydown(function (event) {
-            ball.newDirection = event.keyCode; 
+            ball.newDirection = event.keyCode;
         });
 
         //if (newDirection === 39)
@@ -133,7 +178,7 @@
            // ball.moveRight();
             if (ball.newDirection === 39) {
                 ball.moveRight();
-            } 
+            }
             if (ball.newDirection === 37) {
                 ball.moveLeft();
             }
@@ -150,10 +195,86 @@
            ctx.strokeRect(0, 0, 900, 675)
       }, 30);
 
+      var ball2 = new  Ball2;
 
-       
+      var directions = {
+            37: "left",
+            38: "up",
+            39: "right",
+            40: "down"
+        }
 
-       
+        setInterval(function () {
+
+
+        var newDirection;
+        $("body").keydown(function (event) {
+            ball2.newDirection = event.keyCode;
+        });
+
+        //if (newDirection === 39)
+         {
+            ball2.draw();
+           // ball.moveRight();
+            if (ball2.newDirection === 39) {
+                ball2.moveRight();
+            }
+            if (ball2.newDirection === 37) {
+                ball2.moveLeft();
+            }
+
+            if (ball2.newDirection === 40) {
+                ball2.moveUp();
+            }
+
+            if (ball2.newDirection === 38) {
+                ball2.moveDown();
+            }
+            ball2.newDirection = 0;
+        }
+           
+      }, 30);
+
+        var Ball3 = new Ball3;
+
+        var directions = {
+            37: "left",
+            38: "up",
+            39: "right",
+            40: "down"
+        }
+
+        setInterval(function () {
+
+
+        var newDirection;
+        $("body").keydown(function (event) {
+            ball3.newDirection = event.keyCode;
+        });
+
+        //if (newDirection === 39)
+         {
+            ball3.draw();
+           // ball.moveRight();
+            if (ball3.newDirection === 39) {
+                ball3.moveRight();
+            }
+            if (ball3.newDirection === 37) {
+                ball3.moveLeft();
+            }
+
+            if (ball3.newDirection === 40) {
+                ball3.moveUp();
+            }
+
+            if (ball3.newDirection === 38) {
+                ball3.moveDown();
+            }
+            ball3.newDirection = 0;
+        }
+           
+      }, 30);
+
 
 
 
